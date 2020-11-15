@@ -27,7 +27,9 @@ for i = 1:5
     % for N=1 & N>1. This is because for N=1 we need to make sure the Q
     % values are generated at optimal index, iterative random based 
     % improvment with is unlikely. For the N>1 case we could see benefit for
-    % iterations with random initialization to avoid local minimum.
+    % ite
+    
+
     Zs = [];
     Qs = [];
     if N == 1
