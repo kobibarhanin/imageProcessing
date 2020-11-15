@@ -1,3 +1,6 @@
 
 archive/
 Matlab Toolbox-20191114/
+.DS_Store
+
+*.m~
