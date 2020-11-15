@@ -77,8 +77,7 @@ end
 
 
 % build image mapping:
-%   this will create a mapping vector with the size of the image using the 
-%   calculated Zbins in order to map the image values to quantized values.
+%   this will create a mapping vector 
 map = [];
 for i = 1:length(Zs)-1
     vec = ones(1, Zs(i+1) - Zs(i)) * i;

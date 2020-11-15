@@ -1,6 +1,6 @@
 function [imgNbit,Qvals] = uniformQuantization(img8bit,N)
-
-% floor(img1./16).*16) - this does the whole thing - 1:09,26/10
+% UNIFORMQUANIZATION This function returns the uniform quantization of the
+% image by N+1 bins.
 
 bin_size = floor(256 / power(2, N));
 imgNbit = uint8(ceil(img8bit./bin_size));

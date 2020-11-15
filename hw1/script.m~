@@ -60,7 +60,7 @@ img = imread('cups.tif');
 [bimg, T] = binarizeOpt(img);
 putImage(bimg);
 disp("This image uses optimal binarization with T = " + T)
-disp("(press enter to continue - Note: the next step could take a minute or so to complete)")
+disp("(press enter to continue - Note: the next step could take a minute to complete)")
 pause
 
 
@@ -69,7 +69,7 @@ winsize = 7;
 [bimg] = binarizeOptAdaptive(img, winsize);
 putImage(bimg);
 disp("This image uses adaptive optimal binarization with window size = " + winsize)
-disp("(press enter to exit)")
+disp("(press enter to continue)")
 pause
 close all
 

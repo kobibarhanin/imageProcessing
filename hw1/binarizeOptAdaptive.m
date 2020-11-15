@@ -1,6 +1,7 @@
 function [bimg] = binarizeOptAdaptive(im, winsize)
-%BINARIZEOPTADAPTIVE Summary of this function goes here
-%   Detailed explanation goes here
+%BINARIZEOPTADAPTIVE This function utilized sliding window technique and
+% calculates the optimal binazation per window to filter locality
+% considerations.
 
 % allocate the output image
 bimg = im;
@@ -10,7 +11,7 @@ winInterval = floor(winsize/2);
 
 for rowImg = 1 : size(im,1)
     for colImg = 1 : size(im,2)
-        
+
         values = [];
         rowB = 1;
         for rowWin = -winInterval : winInterval
@@ -30,12 +31,12 @@ for rowImg = 1 : size(im,1)
         end
         % get optimal binarize value for values vector
         [~, T] = binarizeOpt(values);
-        
+
         % assign correct value to output matrix 
         bimg(rowImg, colImg) = (im(rowImg, colImg) > T) * 255;
 
     end
 end
-
+    
 end
 
