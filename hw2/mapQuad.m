@@ -3,9 +3,9 @@ function [newIm] = mapQuad(im, pointsSet1, pointsSet2, transformType)
 %   Detailed explanation goes here
 
 if (transformType == 1)
-    A = findAffineTransform(pointsSet2, pointsSet1);
+    A = findAffineTransform(pointsSet2, pointsSet1)
 else
-    A = findProjectiveTransform(pointsSet2, pointsSet1);
+    A = findProjectiveTransform(pointsSet2, pointsSet1)
 end
 
 
