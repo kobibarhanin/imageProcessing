@@ -104,4 +104,72 @@ imshow(uint8(res))
 % inpolygon([1],[1],x,y);
 
 
+% ====================================================
+% =========================================================================
+
+% disp("Let's get user input for quads:")
+
+% READ IMAGE:
+% img = imread('lighthouse.tif');
+
+% GET USER INPUT QUADS:
+% [pointsSet_grab, pointsSet_0, pointsSet_1] = getUserInputs(img);
+
+% GET POINTSETS
+img_reg = imread('lena.tif');
+img_rev = imread('lena_rev.tif');
+[x_src, y_src] = getPointSet(4, img_reg);
+[x_dst, y_dst] = getPointSet(4, img_reg);
+
+% [x_rev, y_rev] = getPointSet(3, img_rev);
+
+% x_src=[119 182 184 100];
+% y_src=[118 118 193 194];
+% x_dst=[10 60 67 10];
+% y_dst=[8 8 61 72];
+
+
+point_set_src=double([x_src'; y_src']);
+point_set_dst=double([x_dst'; y_dst']);
+
+
+% point_set_src2=[123   154   166   117
+%    118   102   150   177];
+% 
+% point_set_dst2=[   104    65    82   104
+%     24    40    56    47];
+
+% point_set_src=[x_src; y_src];
+% point_set_dst=[x_dst; y_dst];
+
+% x_corresp_reg = [164 153 82];
+% y_corresp_reg = [132 177 32];
+% 
+% x_corresp_rev = [134 176 32];
+% y_corresp_rev = [90 104 173];
+% 
+% point_set_reg = [x_corresp_reg; y_corresp_reg];
+% point_set_rev = [x_corresp_rev; y_corresp_rev];
+
+
+
+
+res = mapQuad(img_reg, point_set_src, point_set_dst, 1);
+
+% res = mapImage(img_reg, point_set_reg, point_set_rev, 1);
+% imshow(uint8(res))
+
+% M = getCordinatesVector(256);
+% 
+% res = inpolygon(M(1,:),M(2,:),x_corresp_reg(:),y_corresp_reg(:));
+% res = reshape(res,256,256)*200;
+imshow(uint8(res));
+hold on
+% plot(point_set_src(1,:),point_set_src(2,:), "-", 'LineWidth',3, 'Color', 'red')
+% plot(point_set_dst(1,:),point_set_dst(2,:), "-", 'LineWidth',3, 'Color', 'blue')
+
+
+
+
+
 

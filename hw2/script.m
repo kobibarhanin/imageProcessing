@@ -11,25 +11,23 @@
 % GET POINTSETS
 img_reg = imread('lena.tif');
 img_rev = imread('lena_rev.tif');
-% [x_reg, y_reg] = getPointSet(3, img_reg);
-% [x_rev, y_rev] = getPointSet(3, img_rev);
+% [x_src, y_src] = getPointSet(4, img_reg);
+% [x_dst, y_dst] = getPointSet(4, img_reg);
+% point_set_src=double([x_src'; y_src']);
+% point_set_dst=double([x_dst'; y_dst']);
 
-x_reg = [164 153 82];
-y_reg = [132 177 32];
+x_src=[119 182 184 100];
+y_src=[118 118 193 194];
+x_dst=[10 60 67 10];
+y_dst=[8 8 61 72];
+point_set_src=[x_src; y_src];
+point_set_dst=[x_dst; y_dst];
 
-x_rev = [134 176 32];
-y_rev = [90 104 173];
+res = mapQuad(img_reg, point_set_src, point_set_dst, 1);
 
-point_set_reg = [x_reg; y_reg];
-point_set_rev = [x_rev; y_rev];
+imshow(uint8(res));
+hold on
 
-% res = mapQuad(img_reg, point_set_reg, point_set_rev, 1);
-% res = mapImage(img_reg, point_set_reg, point_set_rev, 1);
-% imshow(uint8(res))
-
-M = getCordinatesVector(256);
-
-res = inpolygon(M(1,:),M(2,:),x_reg(:),y_reg(:));
-res = reshape(res,256,256)*200;
-imshow(res);
+% plot(point_set_src(1,:),point_set_src(2,:), "-", 'LineWidth',3, 'Color', 'red')
+% plot(point_set_dst(1,:),point_set_dst(2,:), "-", 'LineWidth',3, 'Color', 'blue')
 

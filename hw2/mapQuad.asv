@@ -5,11 +5,18 @@ function [newIm] = mapQuad(im, pointsSet1, pointsSet2, transformType)
 if (transformType == 1)
     A = findAffineTransform(pointsSet2, pointsSet1);
 else
-    A = findProjectiveTransform(pointsSet2, pointsSet1);
+    A = findProjectiveTransform(pointsSet1, pointsSet2);
 end
 
 
+
+% get a standard cordinates vector
+% 1 1, 1 2, 1 3, .. N N
 M = getCordinatesVector(256);
+% M = [];
+% for i = 1:256 
+%     M = [M; [1:256; ones(256,1)'*i]];
+% end
 
 
 % add ones row [V ones(256,1)]
@@ -26,8 +33,8 @@ polygon = inpolygon(M(1,:),M(2,:),pointsSet2(1,:),pointsSet2(2,:));
 polygon = reshape(polygon,256,256);
 
 % get actual pixel values mapping
-% newIm = ones(256,256)*250;
-newIm = im;
+newIm = ones(256,256)*250;
+% newIm = im;
 for i = 1:length(X_t)
     
     t = X_s(:,i);
@@ -39,8 +46,9 @@ for i = 1:length(X_t)
     end
     
     if polygon(t(1),t(2))
-        newIm(t(1),t(2)) = im(k(1),k(2));
-%         newIm(k(1),k(2)) = 0; 
+        newIm(k(1),k(2)) = 0; 
+%         newIm(t(1),t(2)) = 0; 
+%         newIm(t(1),t(2)) = im(k(1),k(2));
 %         newIm(t(1),t(2)) = 0;
     end
     

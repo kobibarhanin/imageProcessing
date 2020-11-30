@@ -10,7 +10,8 @@ for i = 1:2:length(X_source)
     k = [0, 0, X_source(i), X_source(i+1), 0, 1];
     X = [X t k];
 end
-X = reshape(X, 6, 6)';
+X = reshape(X, 6, 8)';
+% X = reshape(X, 6, 6)';
 
 % generate X' matrix - the regular point_set:
 X_t = pointsSet2(:);
