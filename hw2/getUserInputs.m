@@ -7,9 +7,9 @@ imshow(im);
 [psg_x, psg_y] = getPolygon("y");
 [ps1_x, ps1_y] = getPolygon("m");
 
-pointsSet_grab = [psg_x, psg_y]';
-pointsSet_0 = [ps0_x, ps0_y]';
-pointsSet_1 = [ps1_x, ps1_y]';
+pointsSet_grab = double([psg_x, psg_y]');
+pointsSet_0 = double([ps0_x, ps0_y]');
+pointsSet_1 = double([ps1_x, ps1_y]');
 
 end
 

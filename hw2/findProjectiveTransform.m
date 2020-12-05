@@ -13,10 +13,7 @@ for i = 1:2:length(X_source)
     k = [0, 0, X_source(i), X_source(i+1), 0, 1, -X_source(i) * X_t(i+1), -X_source(i+1) * X_t(i+1)];
     X = [X t k];
 end
-X = reshape(X, 8, 8)';
-% X = reshape(X, 6, 8)';
-% X = reshape(X, 6, 6)';
-
+X = reshape(X, 8, i+1)';
 
 % calculate T values: 
 A = pinv(X) * X_t;
