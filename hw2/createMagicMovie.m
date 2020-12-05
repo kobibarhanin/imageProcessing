@@ -70,7 +70,7 @@ for i=(numFrames/2+1):numFrames
     pointsSet_t = (i/(numFrames)).*pointsSet_1 + (1-(i/(numFrames))).*pointsSet_t;
         
     imshow(img)
-    img_altered = mapQuad2(img, pointsSet_grab, pointsSet_t, 2);
+    img_altered = mapQuad(img, pointsSet_grab, pointsSet_t, 2);
     imshow(img_altered)
 
     % to close off the polygon
