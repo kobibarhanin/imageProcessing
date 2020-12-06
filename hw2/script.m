@@ -1,17 +1,3 @@
-% ========================================================
-% READ IMAGE:
-% img = imread('stroller.tif');
-% img = imread('lighthouse.tif');
-% img = imread('stroller.tif');
-% img = imread('lena.tif');
-% ========================================================
-
-
-% ========================================================
-% GET USER INPUT QUADS:
-% [pointsSet_grab, pointsSet_0, pointsSet_1] = getUserInputs(img);
-% ========================================================
-
 
 % ========================================================
 % GET USER INPUT - lena
@@ -30,7 +16,6 @@ plot(pointsSet_grab(1,:),pointsSet_grab(2,:), "-", 'LineWidth',3, 'Color', 'c')
 pointsSet_1=[13   58   59   13  13;
              17   15   55   63   17];
 plot(pointsSet_1(1,:),pointsSet_1(2,:), "-", 'LineWidth',3, 'Color', 'm')
-% ========================================================
 
 % ========================================================
 % GET USER INPUT - lighthouse
@@ -48,18 +33,10 @@ plot(pointsSet_1(1,:),pointsSet_1(2,:), "-", 'LineWidth',3, 'Color', 'm')
 % pointsSet_1=[190   211   203   154  190;
 %              57    61   114   100    57];
 % plot(pointsSet_1(1,:),pointsSet_1(2,:), "-", 'LineWidth',3, 'Color', 'm')
-% ========================================================
 
-% res = mapQuad(img, pointsSet_grab, pointsSet_1,1);
-% imshow(uint8(res));
-% hold on 
-% plot(pointsSet_grab(1,:),pointsSet_grab(2,:), "-", 'LineWidth',3, 'Color', 'red')
-% plot(pointsSet_1(1,:),pointsSet_1(2,:), "-", 'LineWidth',3, 'Color', 'blue')
-
-
-% movieFileName = 'testMovie.avi';
-numFrames = 100;
+numFrames = 10;
 transformType = 1;
 createMagicMovie (movieFileName, numFrames, img, transformType, pointsSet_grab, pointsSet_0, pointsSet_1)
+% createMagicMovie (movieFileName, numFrames, img, transformType)
 
 

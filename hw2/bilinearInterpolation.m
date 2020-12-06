@@ -1,6 +1,6 @@
 function [V] = bilinearInterpolation(im, x, y)
-%BILINEARINTERPOLATION Summary of this function goes here
-%   Detailed explanation goes here
+%BILINEARINTERPOLATION returns the bilinear interpolated value of cordinate
+%(x,y) in im
 
 dx = x-floor(x);
 dy = y-floor(y);
@@ -11,7 +11,6 @@ NW = im(floor(x),floor(y));
 S = SE*dx + SW*(1-dx);
 N = NE*dx + NW*(1-dx);
 V = N*dy + S*(1-dy);
-
 
 end
 

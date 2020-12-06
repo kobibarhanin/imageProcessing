@@ -1,8 +1,10 @@
 function [] = createMagicMovie (movieFileName, numFrames, img, transformType, pointsSet_grab, pointsSet_0, pointsSet_1)
+%CREATEMAGICMOVIE creates the magic movie required.
 
-%CREATEMAGICMOVIE Summary of this function goes here
-%   Detailed explanation goes here
-
+if nargin == 4
+    % get user input quads
+    [pointsSet_grab, pointsSet_0, pointsSet_1] = getUserInputs(img);
+end
 
 video=VideoWriter(movieFileName);     
 open(video);
@@ -33,7 +35,6 @@ for i=1:numFrames/2
 
     pointsSet_t = round([X_t(:,i) Y_t(:,i)]');
         
-
     img_t = mapQuad(img, pointsSet_grab, pointsSet_t, transformType);
     imshow(img_t);
 
