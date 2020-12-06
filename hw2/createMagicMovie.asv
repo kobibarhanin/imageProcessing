@@ -1,8 +1,10 @@
 function [] = createMagicMovie (movieFileName, numFrames, img, transformType, pointsSet_grab, pointsSet_0, pointsSet_1)
+%CREATEMAGICMOVIE creates the magic movie required.
 
-%CREATEMAGICMOVIE Summary of this function goes here
-%   Detailed explanation goes here
-
+if nargin == 4
+    % get user input quads
+    [pointsSet_grab, pointsSet_0, pointsSet_1] = getUserInputs(img);
+end
 
 video=VideoWriter(movieFileName);     
 open(video);
@@ -10,17 +12,16 @@ open(video);
 imshow(img);
 hold on
 
-pointsSet_t = pointsSet_0;
-
-[X,Y] = linspaceVec(pointsSet_t, pointsSet_grab, numFrames/2);
-
+% calculate polygon advancment
+[X_t,Y_t] = linspaceVec(pointsSet_0, pointsSet_grab, numFrames/2);
 
 for i=1:numFrames/2
+    
     % calculate the polygon at time t
-%     pointsSet_t = (i/(numFrames/2)).*pointsSet_grab + (1-(i/(numFrames/2))).*pointsSet_t;
+    pointsSet_t = [X_t(:,i) Y_t(:,i)]';
     
     % plot the polygon at time t
-    p = plot(pointsSet_t(1,:),pointsSet_t(2,:), "-", 'LineWidth',3, 'Color', 'red');
+    p = plot(pointsSet_t(1,:),pointsSet_t(2,:), "-", 'LineWidth',3, 'Color', 'c');
     
     % record frame at time t
     frameT = getframe(gcf);
@@ -30,25 +31,29 @@ for i=1:numFrames/2
     delete(p);
 end
 
-pointsSet_t = pointsSet_grab;
+[X_t,Y_t] = linspaceVec(pointsSet_grab, pointsSet_1, numFrames/2);
 
-for i=(numFrames/2+1):numFrames
-    pointsSet_t = round((i/(numFrames)).*pointsSet_1 + (1-(i/(numFrames))).*pointsSet_t);
+for i=1:numFrames/2
+    
+    % calculate the polygon at time t
+    pointsSet_t = round([X_t(:,i) Y_t(:,i)]');
         
+    % show the altered image at time t
     img_t = mapQuad(img, pointsSet_grab, pointsSet_t, transformType);
     imshow(img_t);
-
-    % to close off the polygon
-    pointsSet_t_show=[pointsSet_t pointsSet_t(:,1)];
     
-    p = plot(pointsSet_t_show(1,:),pointsSet_t_show(2,:), "-", 'LineWidth',3, 'Color', 'red');
-    % hold on
-    pause(0.1);
+    % plot the polygon at time t
+    p = plot(pointsSet_t(1,:),pointsSet_t(2,:), "-", 'LineWidth',3, 'Color', 'c');
+
+    % record frame at time t
     frameT = getframe(gcf);
     writeVideo(video,frameT);
-
+    
+    % remove ploted polygon
     delete(p);
 end
+
+plot(pointsSet_t(1,:),pointsSet_t(2,:), "-", 'LineWidth',3, 'Color', 'c');
 
 close(video);
 

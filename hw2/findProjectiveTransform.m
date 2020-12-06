@@ -1,8 +1,8 @@
 function [T] = findProjectiveTransform(pointsSet1, pointsSet2)
-%FINDPROJECTIVETRANSFORM Summary of this function goes here
-%   Detailed explanation goes here
+%FINDPROJECTIVETRANSFORM calculates the projective trasformation between pointsSet1
+% and pointsSet2
 
-% generate X' matrix - the regular point_set:
+% generate X' vector:
 X_t = pointsSet2(:);
 
 % generate X matrix
@@ -25,8 +25,9 @@ A = pinv(X) * X_t;
 % g h 1
 %  -----------
 
-A = [A(1) A(2) A(5) A(3) A(4) A(6) A(7) A(8) 1];
-T = reshape(A,3,3)';
+T = [A(1) A(2) A(5); 
+     A(3) A(4) A(6); 
+     A(7) A(8)   1];
 
 end
 

@@ -1,6 +1,5 @@
 function [X,Y] = linspaceVec(pointsSet_from,pointsSet_to, points)
-%LINSPACEVEC Summary of this function goes here
-%   Detailed explanation goes here
+%LINSPACEVEC calculates linspace like calculation, but on two 2d vectors
 
 x_f = pointsSet_from(1,:);
 x_t = pointsSet_to(1,:);

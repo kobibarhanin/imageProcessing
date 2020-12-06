@@ -1,6 +1,9 @@
 function [T] = findAffineTransform(pointsSet1, pointsSet2)
-%FINDAFFINETRANSFORM Summary of this function goes here
-%   Detailed explanation goes here
+%FINDAFFINETRANSFORM calculates the affine trasformation between pointsSet1
+% and pointsSet2
+
+% generate X' vector:
+X_t = pointsSet2(:);
 
 % generate X matrix
 X_source = pointsSet1(:);
@@ -11,9 +14,6 @@ for i = 1:2:length(X_source)
     X = [X t k];
 end
 X = reshape(X, 6, i+1)';
-
-% generate X' matrix - the regular point_set:
-X_t = pointsSet2(:);
 
 % calculate T values: 
 A = pinv(X) * X_t;
