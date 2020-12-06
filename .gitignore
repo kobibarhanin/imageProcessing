@@ -1,8 +1,14 @@
 
 */archive/
+*/submitters
+
 Matlab Toolbox-20191114/
 .DS_Store
 
 *.m~
 *.zip
-
+*.asv
+*.avi
+*.tif
+*.db
+*.mat
