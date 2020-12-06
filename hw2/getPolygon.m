@@ -1,4 +1,4 @@
-function [x,y] = getPolygon(color)
+function [x,y, p] = getPolygon(color)
 %GETPOLYGON gets input for polygon from user
 
 [x, y] = ginput(4);
@@ -12,7 +12,7 @@ yp = y;
 xp(end+1)=xp(1);
 yp(end+1)=yp(1);
 
-plot(xp,yp, "-", 'LineWidth',3, 'Color', color)
+p = plot(xp,yp, "-", 'LineWidth',3, 'Color', color);
 hold on
 
 end
