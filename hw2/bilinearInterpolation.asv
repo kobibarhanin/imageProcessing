@@ -1,0 +1,20 @@
+function [outputArg1,outputArg2] = bilinearInterpolation(inputArg1,inputArg2)
+%BILINEARINTERPOLATION Summary of this function goes here
+%   Detailed explanation goes here
+x = 12.9;
+y = 66.6;
+
+dx = x-floor(x);
+dy = y-floor(y);
+SE = im(ceil(x),ceil(y));
+SW = im(ceil(x),floor(y));
+NE = im(floor(x),ceil(y));
+NW = im(floor(x),floor(y));
+S = SE*dx + SW*(1-dx);
+N = NE*dx + NW*(1-dx);
+V = N*dy + S*(1-dy);
+
+outputArg1 = inputArg1;
+outputArg2 = inputArg2;
+end
+

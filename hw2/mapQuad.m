@@ -31,13 +31,6 @@ X_t = A\X_dest;
 X_t = X_t ./ X_t(3,:);
 X_t(3,:) = [];
 
-X_t = round(X_t);
-
-
-
-% Nearest Neighbour interpolation
-% X_t = round(X_t ./ X_t(3,:));
-
 
 for i = 1:length(X_dest)
     
@@ -51,8 +44,8 @@ for i = 1:length(X_dest)
     end
     
     % pixel assignment:
-    newIm(x_d(2),x_d(1)) = im(t(2),t(1));
-    
+    newIm(x_d(2),x_d(1)) = bilinearInterpolation(im,t(2),t(1));
+
 end
 
 end
