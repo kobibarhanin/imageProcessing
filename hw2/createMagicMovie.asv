@@ -10,11 +10,14 @@ open(video);
 imshow(img);
 hold on
 
-[X_t,Y_t] = linspaceVec(pointsSet_0, pointsSet_grab, numFrames/2);
+pointsSet_t = pointsSet_0;
+
+[X,Y] = linspaceVec(pointsSet_t, pointsSet_grab, numFrames/2);
+
 
 for i=1:numFrames/2
     % calculate the polygon at time t
-    pointsSet_t = [X_t(:,i) Y_t(:,i)]';
+%     pointsSet_t = (i/(numFrames/2)).*pointsSet_grab + (1-(i/(numFrames/2))).*pointsSet_t;
     
     % plot the polygon at time t
     p = plot(pointsSet_t(1,:),pointsSet_t(2,:), "-", 'LineWidth',3, 'Color', 'red');
@@ -27,13 +30,11 @@ for i=1:numFrames/2
     delete(p);
 end
 
-[X_t,Y_t] = linspaceVec(pointsSet_grab, pointsSet_1, numFrames/2);
+pointsSet_t = pointsSet_grab;
 
-for i=1:numFrames/2
-
-    pointsSet_t = round([X_t(:,i) Y_t(:,i)]');
+for i=(numFrames/2+1):numFrames
+    pointsSet_t = round((i/(numFrames)).*pointsSet_1 + (1-(i/(numFrames))).*pointsSet_t);
         
-
     img_t = mapQuad(img, pointsSet_grab, pointsSet_t, transformType);
     imshow(img_t);
 
@@ -41,7 +42,8 @@ for i=1:numFrames/2
     pointsSet_t_show=[pointsSet_t pointsSet_t(:,1)];
     
     p = plot(pointsSet_t_show(1,:),pointsSet_t_show(2,:), "-", 'LineWidth',3, 'Color', 'red');
-
+    % hold on
+    pause(0.1);
     frameT = getframe(gcf);
     writeVideo(video,frameT);
 
