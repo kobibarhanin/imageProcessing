@@ -33,8 +33,15 @@ im = imread('lena.tif');
 % cleanedMedianMultiImage = cleanImageMedian_multi(imSet);
 % imshow(cleanedMedianMultiImage);
 
-imshow(addSPnoise(im,0.1));
-pause
-imSet = cat(3, addSPnoise(im,0.1), addSPnoise(im,0.1), addSPnoise(im,0.1));
-cleanedMeanMultiImage = cleanImageMean_multi(imSet);
-imshow(cleanedMeanMultiImage);
+% imshow(addSPnoise(im,0.1));
+% pause
+% imSet = cat(3, addSPnoise(im,0.1), addSPnoise(im,0.1), addSPnoise(im,0.1));
+% cleanedMeanMultiImage = cleanImageMean_multi(imSet);
+% imshow(cleanedMeanMultiImage);
+
+
+% PSNRval = calcPSNR(addSPnoise(im,0.1), im)
+% pause
+% PSNRval = calcPSNR(addSPnoise(im,0.4), im)
+% pause
+% PSNRval = calcPSNR(im, im)
