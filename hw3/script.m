@@ -16,10 +16,25 @@ im = imread('lena.tif');
 % cleanedMedianImage = cleanImageMedian(im,maskRadius);
 % imshow(cleanedMedianImage);
 
+% maskRadius = 1;
+% maskSTD = 2;
+% cleanedMeanImage = cleanImageMean(im,maskSTD,maskRadius);
+% imshow(cleanedMeanImage);
 
-maskRadius = 1;
-maskSTD = 2;
-cleanedMeanImage = cleanImageMean(im,maskSTD,maskRadius);
-imshow(cleanedMeanImage);
+% maskRadius = 1;
+% maskSTD = 2;
+% lambda = 3;
+% sharpImage = sharpen(im, maskRadius, maskSTD, lambda);
+% imshow(sharpImage);
 
+% imshow(addSPnoise(im,0.1));
+% pause
+% imSet = cat(3, addSPnoise(im,0.1), addSPnoise(im,0.1), addSPnoise(im,0.1));
+% cleanedMedianMultiImage = cleanImageMedian_multi(imSet);
+% imshow(cleanedMedianMultiImage);
 
+imshow(addSPnoise(im,0.1));
+pause
+imSet = cat(3, addSPnoise(im,0.1), addSPnoise(im,0.1), addSPnoise(im,0.1));
+cleanedMeanMultiImage = cleanImageMean_multi(imSet);
+imshow(cleanedMeanMultiImage);
