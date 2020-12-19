@@ -39,7 +39,6 @@ im = imread('lena.tif');
 % cleanedMeanMultiImage = cleanImageMean_multi(imSet);
 % imshow(cleanedMeanMultiImage);
 
-
 % PSNRval = calcPSNR(addSPnoise(im,0.1), im)
 % pause
 % PSNRval = calcPSNR(addSPnoise(im,0.4), im)
