@@ -29,7 +29,8 @@ im = imread('lena.tif');
 
 % imshow(addSPnoise(im,0.1));
 % pause
-% imSet = cat(3, addSPnoise(im,0.1), addSPnoise(im,0.1), addSPnoise(im,0.1));
+% % imSet = cat(3, addSPnoise(im,0.1), addSPnoise(im,0.1), addSPnoise(im,0.1));
+% imSet = BuildImageSet(im, 3, 1, 0.1);
 % cleanedMedianMultiImage = cleanImageMedian_multi(imSet);
 % imshow(cleanedMedianMultiImage);
 

@@ -91,36 +91,83 @@ im = imread('lena.tif');
 
 % f)
 % build the Gaussian noise image set
-imSet_GaussianNoise = cat(3, addGaussianNoise(im,0.1), addGaussianNoise(im,0.1), addGaussianNoise(im,0.1));
+% imSet_GaussianNoise = cat(3, addGaussianNoise(im,0.1), addGaussianNoise(im,0.1), addGaussianNoise(im,0.1));
+% imSet_GaussianNoise = BuildImageSet(im, 3, 2, 0.1);
+% 
+% % clean with mean multi image
+% cleanedMeanMultiImage = cleanImageMean_multi(imSet_GaussianNoise);
+% cleanedMeanMultiImagePSNR = calcPSNR(cleanedMeanMultiImage, im);
+% disp("Cleaned Gaussian noise with Mean Multi image, PSNR = "+cleanedMeanMultiImagePSNR+" ->")
+% imshow(cleanedMeanMultiImage);
+% pause
+% 
+% % clean with median multi image
+% cleanedMedianMultiImage = cleanImageMedian_multi(imSet_GaussianNoise);
+% cleanedMedianMultiImagePSNR = calcPSNR(cleanedMedianMultiImage, im);
+% disp("Cleaned Gaussian noise with Median Multi image, PSNR = "+cleanedMedianMultiImagePSNR+" ->")
+% imshow(cleanedMedianMultiImage);
+% pause
+% 
+% % g)
+% % build the Salt&Pepper noise image set
+% % imSet_SaltNPepperNoise = cat(3, addSPnoise(im,0.1), addSPnoise(im,0.1), addSPnoise(im,0.1));
+% imSet_SaltNPepperNoise = BuildImageSet(im, 3, 1, 0.1);
+% 
+% % clean with mean multi image
+% cleanedMeanMultiImage = cleanImageMean_multi(imSet_SaltNPepperNoise);
+% cleanedMeanMultiImagePSNR = calcPSNR(cleanedMeanMultiImage, im);
+% disp("Cleaned Salt&Pepper noise with Mean Multi image, PSNR = "+cleanedMeanMultiImagePSNR+" ->")
+% imshow(cleanedMeanMultiImage);
+% pause
+% 
+% % clean with median multi image
+% cleanedMedianMultiImage = cleanImageMedian_multi(imSet_SaltNPepperNoise);
+% cleanedMedianMultiImagePSNR = calcPSNR(cleanedMedianMultiImage, im);
+% disp("Cleaned Salt&Pepper noise with Median Multi image, PSNR = "+cleanedMedianMultiImagePSNR+" ->")
+% imshow(cleanedMedianMultiImage);
+% pause
 
-% clean with mean multi image
-cleanedMeanMultiImage = cleanImageMean_multi(imSet_GaussianNoise);
-cleanedMeanMultiImagePSNR = calcPSNR(cleanedMeanMultiImage, im);
-disp("Cleaned Gaussian noise with Mean Multi image, PSNR = "+cleanedMeanMultiImagePSNR+" ->")
-imshow(cleanedMeanMultiImage);
+
+% % h)
+% cleanedSNPImagePSNRs = [];
+% for numFrames=1:10
+%     
+%     imSet_SaltNPepperNoise = BuildImageSet(im, numFrames, 1, 0.1);
+%     cleanedMedianMultiImage = cleanImageMedian_multi(imSet_SaltNPepperNoise);
+%     cleanedSNPImagePSNRs(end+1) = calcPSNR(cleanedMedianMultiImage, im);
+% end
+% disp("cleanedSNPImagePSNRs - frames")
+% plot(1:10,cleanedSNPImagePSNRs);
+% pause
+% 
+% % i)
+% cleanedGaussianImagePSNRs = [];
+% for numFrames=1:10
+%     
+%     imSet_GaussianNoise = BuildImageSet(im, numFrames, 2, 0.1);
+%     cleanedMeanMultiImage = cleanImageMean_multi(imSet_GaussianNoise);
+%     cleanedGaussianImagePSNRs(end+1) = calcPSNR(cleanedMeanMultiImage, im);
+% end
+% disp("cleanedGaussianImagePSNRs - frames")
+% plot(1:10,cleanedGaussianImagePSNRs);
+% pause
+
+% j)
+
+K=5;
+blurred_im = uint8(conv2(im, ones(K,K).*1/(K^2)));
+maskRadius = 1;
+maskSTD = 2;
+lambda = 3;
+sharpen_im = sharpen(blurred_im, maskRadius, maskSTD, lambda);
+disp("blurred image ->")
+imshow(blurred_im);
 pause
 
-% clean with median multi image
-cleanedMedianMultiImage = cleanImageMedian_multi(imSet_GaussianNoise);
-cleanedMedianMultiImagePSNR = calcPSNR(cleanedMedianMultiImage, im);
-disp("Cleaned Gaussian noise with Median Multi image, PSNR = "+cleanedMedianMultiImagePSNR+" ->")
-imshow(cleanedMedianMultiImage);
+disp("sharpened image ->")
+imshow(sharpen_im);
 pause
 
-% g)
-% build the Salt&Pepper noise image set
-imSet_SaltNPepperNoise = cat(3, addSPnoise(im,0.1), addSPnoise(im,0.1), addSPnoise(im,0.1));
+% (K - lambda) with gibbs artifact context
 
-% clean with mean multi image
-cleanedMeanMultiImage = cleanImageMean_multi(imSet_SaltNPepperNoise);
-cleanedMeanMultiImagePSNR = calcPSNR(cleanedMeanMultiImage, im);
-disp("Cleaned Salt&Pepper noise with Mean Multi image, PSNR = "+cleanedMeanMultiImagePSNR+" ->")
-imshow(cleanedMeanMultiImage);
-pause
-
-% clean with median multi image
-cleanedMedianMultiImage = cleanImageMedian_multi(imSet_SaltNPepperNoise);
-cleanedMedianMultiImagePSNR = calcPSNR(cleanedMedianMultiImage, im);
-disp("Cleaned Salt&Pepper noise with Median Multi image, PSNR = "+cleanedMedianMultiImagePSNR+" ->")
-imshow(cleanedMedianMultiImage);
-pause
+% k)
