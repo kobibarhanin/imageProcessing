@@ -6,7 +6,9 @@ function [cleanIm] = cleanImageMean(im, maskRadius, maskSTD)
 % TODO - byo gaus mask generator
 
 % generate mask ...
-gaus_mask = fspecial('gaussian',maskRadius*2+1,maskSTD);
+% gaus_mask = fspecial('gaussian',maskRadius*2+1,maskSTD);
+gaus_mask = getGausianMask(maskRadius, maskSTD);
+
 
 % TODO - check this same issue
 cleanIm = uint8(conv2(im, gaus_mask,'same'));

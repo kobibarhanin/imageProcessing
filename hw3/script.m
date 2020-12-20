@@ -4,8 +4,8 @@ im = imread('lena.tif');
 % noisySNPImage = addSPnoise(im,p);
 % imshow(noisySNPImage);
 
-% s = 0.2;
-% noisyGAUSImage = addGaussianNoise(im,s);
+s = 0.2;
+noisyGAUSImage = addGaussianNoise(im,s);
 % imshow(noisyGAUSImage);
 
 % t = 40;
@@ -16,10 +16,10 @@ im = imread('lena.tif');
 % cleanedMedianImage = cleanImageMedian(im,maskRadius);
 % imshow(cleanedMedianImage);
 
-% maskRadius = 1;
-% maskSTD = 2;
-% cleanedMeanImage = cleanImageMean(im,maskSTD,maskRadius);
-% imshow(cleanedMeanImage);
+maskRadius = [1,1];
+maskSTD = 2;
+cleanedMeanImage = cleanImageMean(noisyGAUSImage,maskRadius, maskSTD);
+imshow(cleanedMeanImage);
 
 % maskRadius = 1;
 % maskSTD = 2;

@@ -15,9 +15,9 @@ im = imread('lena.tif');
 % pause
 % 
 % % mean denoising + PSNR to original
-% maskRadius = 1;
+% maskRadius = [1,1];
 % maskSTD = 2;
-% cleanedMeanImage = cleanImageMean(noisySNPImage,maskSTD,maskRadius);
+% cleanedMeanImage = cleanImageMean(noisySNPImage,maskRadius, maskSTD);
 % cleanedMeanImagePSNR = calcPSNR(cleanedMeanImage, im);
 % disp("Cleaned with Mean, PSNR = "+cleanedMeanImagePSNR+" ->")
 % imshow(cleanedMeanImage);
@@ -42,9 +42,9 @@ im = imread('lena.tif');
 % pause
 % 
 % % mean denoising + PSNR to original
-% maskRadius = 1;
+% maskRadius = [1,1];
 % maskSTD = 2;
-% cleanedMeanImage = cleanImageMean(noisyGausImage,maskSTD,maskRadius);
+% cleanedMeanImage = cleanImageMean(noisyGausImage, maskRadius, maskSTD);
 % cleanedMeanImagePSNR = calcPSNR(cleanedMeanImage, im);
 % disp("Cleaned with Mean, PSNR = "+cleanedMeanImagePSNR+" ->")
 % imshow(cleanedMeanImage);
@@ -80,9 +80,9 @@ im = imread('lena.tif');
 % cleanedMeanImagePSNRs = [];
 % for maskSTD=1:10
 %     s = 0.6;
-%     maskRadius = 7;
+%     maskRadius = [3,3];
 %     noisyGaussImage = addGaussianNoise(im,s);
-%     cleanedMeanImage = cleanImageMean(noisyGaussImage,maskSTD,maskRadius);
+%     cleanedMeanImage = cleanImageMean(noisyGaussImage,maskRadius, maskSTD);
 %     cleanedMeanImagePSNRs(end+1) = calcPSNR(cleanedMeanImage, im);
 % %     imshow(cleanedMedianImage);
 % %     pause
