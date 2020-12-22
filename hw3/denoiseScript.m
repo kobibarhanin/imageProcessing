@@ -1,6 +1,6 @@
 % original image
-% im = imread('lena.tif');
-im = imread('stroller.tif');
+im = imread('lena.tif');
+% im = imread('stroller.tif');
 disp("The original image ->")
 imshow(im);
 pause
@@ -8,7 +8,7 @@ pause
 % a)
 
 % s&p noised image + PSNR to original
-p = 0.05;
+p = 0.2;
 noisySNPImage = addSPnoise(im,p);
 noisySNPImagePSNR = calcPSNR(noisySNPImage, im);
 disp("Noised with Salt&Pepper, PSNR = "+noisySNPImagePSNR+" ->")
@@ -76,14 +76,14 @@ pause
 % d)
 % plot maskRadius - PSNR (Salt&Pepper noise, median filtering)
 cleanedMedianImagePSNRs = [];
-for radius=1:10
+for radius=1:20
     maskRadius = [radius,radius];
     p = 0.4;
     noisySNPImage = addGaussianNoise(im,p);
     cleanedMedianImage = cleanImageMedian(noisySNPImage,maskRadius);
     cleanedMedianImagePSNRs(end+1) = calcPSNR(cleanedMedianImage, im);
 end
-plot(1:10,cleanedMedianImagePSNRs);
+plot(1:20,cleanedMedianImagePSNRs);
 disp('maskRadius - PSNR (Salt&Pepper noise, median filtering) ->')
 title('maskRadius - PSNR (Salt&Pepper noise, median filtering)')
 xlabel('maskRadius') 
@@ -93,14 +93,14 @@ pause
 % e)
 % plot maskSTD - PSNR (Gaussian blur noise, mean filtering)
 cleanedMeanImagePSNRs = [];
-for maskSTD=1:10
-    s = 0.6;
-    maskRadius = [3,3];
+for maskSTD=1:20
+    s = 0.4;
+    maskRadius = [1,1];
     noisyGaussImage = addGaussianNoise(im,s);
     cleanedMeanImage = cleanImageMean(noisyGaussImage,maskRadius, maskSTD);
     cleanedMeanImagePSNRs(end+1) = calcPSNR(cleanedMeanImage, im);
 end
-plot(1:10,cleanedMeanImagePSNRs);
+plot(1:20,cleanedMeanImagePSNRs);
 disp('maskSTD - PSNR (Gaussian blur noise, mean filtering) ->')
 title('maskSTD - PSNR (Gaussian blur noise, mean filtering)')
 xlabel('maskSTD') 
