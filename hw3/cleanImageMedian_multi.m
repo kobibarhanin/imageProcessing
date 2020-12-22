@@ -1,8 +1,7 @@
 function [cleanIm] = cleanImageMedian_multi(imArray)
-%CLEANIMAGEMEDIAN_MULTI Summary of this function goes here
-%   Detailed explanation goes here
+%CLEANIMAGEMEDIAN_MULTI Cleans an image from a noised image set with
+% median.
 
-% cleanIm = imArray(:,:,1);
 cleanIm = uint8(median(imArray,3));
 
 end

@@ -1,7 +1,5 @@
 function [sharpIm] = sharpen(im, maskRadius, maskSTD, lambda)
-%SHARPEN Summary of this function goes here
-%   Detailed explanation goes here
-
+%SHARPEN Sharpens the image using a gaussian blur version of the image.
 
 gmask = getGausianMask(maskRadius, maskSTD);
 

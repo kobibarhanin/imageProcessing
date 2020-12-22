@@ -1,6 +1,6 @@
 function [imageSet] = BuildImageSet(im, setSize, noiseType, noiseFactor)
-%BUILDIMAGESET Summary of this function goes here
-%   Detailed explanation goes here
+%BUILDIMAGESET Builds a layered image as a set of base image and noised
+% layers.
 
 imageSet=im;
 

@@ -1,6 +1,5 @@
 function [noisyIm] = addSPnoise(im, p)
-%ADDSPNOISE Summary of this function goes here
-%   Detailed explanation goes here
+%ADDSPNOISE Adds salt and pepper noise to an image.
 
 % generate random linear indices according to p
 rand_i=find(rand(size(im)) < p);

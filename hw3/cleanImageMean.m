@@ -1,16 +1,9 @@
 function [cleanIm] = cleanImageMean(im, maskRadius, maskSTD)
-%CLEANIMAGEMEAN Summary of this function goes here
-%   Detailed explanation goes here
+%CLEANIMAGEMEAN Cleans an image by averaging on a weighted mask with a gauss
+% distribuition
 
-% TODO - mask radius should be 2 values vec (x,y)
-% TODO - byo gaus mask generator
-
-% generate mask ...
-% gaus_mask = fspecial('gaussian',maskRadius*2+1,maskSTD);
 gaus_mask = getGausianMask(maskRadius, maskSTD);
 
-
-% TODO - check this same issue
 cleanIm = uint8(conv2(im, gaus_mask,'same'));
 
 end
