@@ -1,3 +1,4 @@
+
 function [newIm] = mapQuad(im, pointsSet1, pointsSet2, transformType)
 %MAPQUAD maps quad defined by pointsSet1 to quad defined by pointsSet2 
 % using transformType and bilinear interpolation, on image im.
