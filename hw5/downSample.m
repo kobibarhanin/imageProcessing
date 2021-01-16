@@ -9,14 +9,11 @@ g = [0.05 0.25 0.4 0.25 0.05];
 low_pass_filter = g' * g;
 
 % convolve
-blurredIm = uint8(conv2(I, low_pass_filter,'same'));
-
-% generate sample map (1 in 4)
-sample = sampleMap(size(I,1),size(I,2));
-
-% apply sampling 
-DS=blurredIm(sample);
-DS=reshape(DS,round(size(I,1)/2),round(size(I,2)/2));
+blurredIm = conv2(I, low_pass_filter,'same');
+ 
+% reduct pixels
+DS = blurredIm(1:2:end,1:2:end); 
+DS = reshape(DS,size(I,1)/2,size(I,2)/2);
 
 end
 

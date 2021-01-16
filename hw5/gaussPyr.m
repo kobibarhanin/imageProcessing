@@ -3,10 +3,10 @@ function [G] = gaussPyr(img,levels)
 %   Detailed explanation goes here
 
 G = cell(levels,1);
-dsIm = img;
-for i = 1:levels
-    dsIm = downSample(dsIm);
-    G{i} = dsIm;
+G{1} = img;
+
+for i = 2:levels
+    G{i} = downSample(G{i-1});
 end
 
 end
