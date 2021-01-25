@@ -51,8 +51,10 @@
 % putImage(uint8(localContrast))
 % pause
 
-img1 = readImage('butterfly1.tif');
-img2 = readImage('butterfly2.tif');
+% img1 = readImage('butterfly1.tif');
+% img2 = readImage('butterfly2.tif');
+img1 = readImage('BootsB.tif');
+img2 = readImage('BootsF.tif');
 levels = 3;
 rImg = multiImageFocus(img1,img2,levels);
 putImage(rImg)

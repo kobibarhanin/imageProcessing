@@ -22,8 +22,8 @@ end
 low_pass1 = lPyr1{levels};
 low_pass2 = lPyr2{levels};
 
-local1 = localImageContrast(low_pass1, 3);
-local2 = localImageContrast(low_pass2, 3);
+local1 = localImageContrast(low_pass1, 1);
+local2 = localImageContrast(low_pass2, 1);
 
 local1sharper = local1 > local2;
 local2sharper = ~local1sharper;
