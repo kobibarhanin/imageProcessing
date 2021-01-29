@@ -1,6 +1,6 @@
 function [DS] = downSample(I)
-%DOWNSAMPLE Summary of this function goes here
-%   Detailed explanation goes here
+%DOWNSAMPLE downsamples an image by gaussian bluring and
+% removing ever other pixel
 
 % gaussian coefficiants
 g = [0.05 0.25 0.4 0.25 0.05];

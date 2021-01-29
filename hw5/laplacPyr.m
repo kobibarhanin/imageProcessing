@@ -1,6 +1,6 @@
 function [L] = laplacPyr(img,levels)
-%laplacPyr Summary of this function goes here
-%   Detailed explanation goes here
+%laplacPyr construct the image's laplace pyramid 
+% from the gaussian pyramid
 
 gPyr = gaussPyr(img,levels);
 

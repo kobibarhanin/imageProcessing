@@ -1,6 +1,5 @@
 function [G] = gaussPyr(img,levels)
-%GAUSSPYR Summary of this function goes here
-%   Detailed explanation goes here
+%GAUSSPYR builds the image's gaussian pyramid
 
 G = cell(levels,1);
 G{1} = img;

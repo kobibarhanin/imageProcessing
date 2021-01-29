@@ -1,72 +1,44 @@
-% im = imread('lena.tif');
-% im = imread('stroller.tif');
-% putImage(im);
-% pause
+% ===================================
+% Submitters
+% ===================================
+% - name: Kobi Bar-Hanin
+%   id: 201581659
+% - name: Tzvi Knol
+%   id: 206073934
 
-% im = double(im);
+% ===================================
+% Example
+% ===================================
 
-% =========================
-% downSample
-% =========================
-% dsIm = downSample(im);
-% putImage(dsIm);
-% pause
+% im1 = 'butterfly_wings1.tif';
+% im2 = 'butterfly_wings12.tif';
 
-% =========================
-% gaussPyr
-% =========================
-% gPyr = gaussPyr(im,3);
-% putImage(gPyr{1});
-% pause
-% putImage(gPyr{2});
-% pause
-% putImage(gPyr{3});
-% pause
+% im1 = 'BootsB.tif';
+% im2 = 'BootsF.tif';
 
-% =========================
-% upSample
-% =========================
-% usIm = upSample(dsIm);
-% putImage(usIm);
-% pause
+im1 = 'mateshaked_1s.tif';
+im2 = 'mateshaked_2s.tif';
 
-% =========================
-% laplacPyr
-% =========================
-% lPyr = laplacPyr(im,3);
-% putImage(lPyr{1});
-% pause
-% putImage(lPyr{2});
-% pause
-% putImage(lPyr{3});
-% pause
+img1 = readImage(im1);
+img2 = readImage(im2);
 
-% im_recon = collapseLapPyr(lPyr);
-% putImage(im);
-% putImage(im_recon);
-% sum(sum(im-im_recon))
-% pause
+putImage(img1);
+title(im1)
 
-% localContrast = localImageContrast(im, 5);
-% putImage(uint8(localContrast))
-% pause
+putImage(img2);
+title(im2)
 
-% img1 = readImage('butterfly1.tif');
-% img2 = readImage('butterfly2.tif');
-img1 = readImage('BootsB.tif');
-img2 = readImage('BootsF.tif');
 levels = 3;
 rImg = multiImageFocus(img1,img2,levels);
 putImage(rImg)
+title('multi focused image')
+
+disp 'Hi, we can see 3 images, one of the little girl blurred,'
+disp 'one of the big dog blurred, and a multi image focus of the two.'
+disp 'Note - streach the images recieved for a better view.'
 pause
 
 close all
-% clear
-
-
-
-
-
-
+clear
 
 

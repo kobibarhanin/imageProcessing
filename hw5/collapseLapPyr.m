@@ -1,6 +1,6 @@
 function [img] = collapseLapPyr(L)
-%COLLAPSELAPPYR Summary of this function goes here
-%   Detailed explanation goes here
+%COLLAPSELAPPYR collapse th elaplace pyramid to 
+% construct original image
 
 levels = size(L,1);
 img = L{levels};
